@@ -1,16 +1,32 @@
 <?php
 namespace App\Classes;
 
+/**
+ * Class View
+ * @package App\Classes
+ */
 class View
 {
 
     //The parameters to be passed to the view
+	/**
+     * @var
+     */
     protected $params;
 
     //The path of the view file
+	/**
+     * @var string
+     */
     protected $viewPath;
 
-    
+
+	/**
+     * View constructor.
+     *
+     * @param $view
+     * @param $params
+     */
     function __construct( $view , $params )
     {
 

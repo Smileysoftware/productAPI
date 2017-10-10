@@ -6,6 +6,10 @@ use App\Classes\View;
 ################################################################################
 # Quick method to fire off a view
 ################################################################################
+/**
+ * @param $view
+ * @param $params
+ */
 function view( $view , $params )
 {
 
@@ -18,6 +22,9 @@ function view( $view , $params )
 # Pretty little function to echo out the data passed.
 # Gracefully handles Arrays and Strings
 ################################################################################
+/**
+ * @param $data
+ */
 function dump( $data )
 {
 
@@ -35,6 +42,11 @@ function dump( $data )
 # Simple getter method to pull the proper key value from the config file.
 # The config file is not included within the repo for security purposes.
 ################################################################################
+/**
+ * @param $key
+ *
+ * @return mixed
+ */
 function config( $key )
 {
     //Open the file and find the key

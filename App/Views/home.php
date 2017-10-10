@@ -5,7 +5,7 @@
     <body>
         
         <?php
-           echo $oarams['status']; 
+           echo $params['status']; 
         ?>
 
     </body>

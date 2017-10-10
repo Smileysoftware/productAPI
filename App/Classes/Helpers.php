@@ -1,9 +1,17 @@
 <?php
+//Class is purposfully not namespaced so that it is globally acecssible.
 
+use App\Classes\View;
+
+################################################################################
+# Quick method to fire off a view
+################################################################################
 function view( $view , $params )
 {
 
-    echo $params['status'];
+    //Create a new View instance and pass the path and params properties
+    $view = new View( $view , $params );
+
 }
 
 ################################################################################

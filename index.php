@@ -9,4 +9,7 @@ $app = new \App\Bootstrap\App();
 
 $t = new testClass();
 
-echo $t->test();
+$status = $t->test();
+$status1 = $t->test();
+
+view( 'home' ,  compact ('status' , 'status1') );

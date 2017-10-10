@@ -30,3 +30,15 @@ function dump( $data )
     echo '</pre>';
 
 }
+
+################################################################################
+# Simple getter method to pull the proper key value from the config file.
+# The config file is not included within the repo for security purposes.
+################################################################################
+function config( $key )
+{
+    //Open the file and find the key
+    $config = include(dirname( __DIR__ ) . '/config.php');
+
+    return $config[$key];
+}

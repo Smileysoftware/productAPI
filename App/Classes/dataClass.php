@@ -32,14 +32,19 @@ class dataClass {
 	 */
 	public function getList() {
 
-		$data = $this->curler( $this->list_endpoint );
+		$complete = false;
+		while( $complete === false ){
 
-		if ( $data[ 'status_code' ] === 200 )  {  // OR Data source error, please try again
+			$data = $this->curler( $this->list_endpoint );
+			
+			if ( $data <> false )  {
 
-			return json_decode( $data['data'] );
-
-		} else {
-
+				$complete = true;
+	
+				return json_decode( $data['data'] );
+				
+	
+			}
 		}
 
 
@@ -54,14 +59,18 @@ class dataClass {
 	public function getProductInfo( $id )
 	{
 		//Call the data for the product from the API
-		$data = $this->curler( $this->info_endpoint . '?id=' . $id );
+		$complete = false;
+		while( $complete === false ){
 
-		if ( $data[ 'status_code' ] === 200 )  {  // OR Data source error, please try again
+			$data = $this->curler( $this->info_endpoint . '?id=' . $id );
+			
+			if ( $data <> false )  {
 
-			return json_decode( $data['data'] )->$id;
-
-		} else {
-
+				$complete = true;
+	
+				return json_decode( $data['data'] )->$id;
+				
+			}
 		}
 	}
 
@@ -72,20 +81,28 @@ class dataClass {
 	 *
 	 * @return array
 	 */
-	private function curler( $endpoint ) {
-
+	private function curler( $endpoint ) 
+	{
 		$ch = curl_init();
 		curl_setopt( $ch, CURLOPT_URL, $endpoint );
-		curl_setopt( $ch, CURLOPT_TIMEOUT, 60 );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 20 );
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 
 		/*
-		 * Build the result and status code and return two object parameters
-		 */
+		* Build the result and status code and return two object parameters
+		*/
 		$result      = curl_exec( $ch );
 		$status_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 
+		$data = json_decode( $result );
+
+		//Catch any errors and reprocess the request.
+		if ( isset( $data->error )){
+			return false;
+		}
+
 		return [ 'status_code' => $status_code, 'data' => $result ];
+
 	}
 
 

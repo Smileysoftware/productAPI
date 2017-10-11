@@ -1,15 +1,18 @@
 <?php
 
-use App\Classes\testClass;
+use App\Classes\dataClass;
 
 
 require_once('App/bootstrap/bootstrap.php');
 $app = new \App\Bootstrap\App();
 
+$model = new dataClass();
 
-$t = new testClass();
+$data = $model->getList();
 
-$status = $t->test();
-$status1 = $t->test();
+//$t = new testClass();
+//
+//$status = $t->test();
+//$status1 = $t->test();
 
-view( 'home' ,  compact ('status' , 'status1') );
+view( 'home' ,  compact ('data') );

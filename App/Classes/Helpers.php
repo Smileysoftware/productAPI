@@ -29,8 +29,8 @@ function dump( $data )
 {
 
     echo '<pre style="border: 1px solid #c11c1c; margin: 4px; padding: 4px; background-color: #ffc3c3;">';
-    if ( gettype( $data ) == 'array' ){
-        var_dump( $data );        
+    if ( gettype( $data ) == 'array' OR gettype( $data ) == 'object' ) {
+        var_dump( $data );
     } else {
         echo $data;
     }

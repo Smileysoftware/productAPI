@@ -1,0 +1,9 @@
+<?php
+
+return [
+
+    'endpoint' => 'https://www.webservice.com/api',
+    'endpoint-list' => 'list',
+    'endpoint-info' => 'info',
+
+];

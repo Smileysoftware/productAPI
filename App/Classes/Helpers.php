@@ -50,7 +50,9 @@ function dump( $data )
 function config( $key )
 {
     //Open the file and find the key
-    $config = include(dirname( __DIR__ ) . '/config.php');
+    if ( ! $config = include(dirname( __DIR__ ) . '/config.php') ){
+        exit('The config file is missing or cannot be loaded, If this is a new installation please copy or rename config.php.example');
+    }
 
     return $config[$key];
 }

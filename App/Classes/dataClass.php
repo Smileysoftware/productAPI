@@ -28,6 +28,9 @@ class dataClass {
 	}
 
 	/**
+	 * Method to list all products
+	 * 
+	 * @return JSon Object
 	 *
 	 */
 	public function getList() {
@@ -50,12 +53,24 @@ class dataClass {
 
 	}
 
+	/**
+	 * Method to return the id for the requested product
+	 * 
+	 * @var $url String
+	 * @return String
+	 */
 	public function getProductID( $url )
 	{
 		//Get the end of the URL
 		return substr($url , strrpos($url , '/' ) + 1 ) ;
 	}
 
+	/**
+	 * Method to return the data for a specific product
+	 * 
+	 * @var $id String
+	 * @return JSon Data
+	 */
 	public function getProductInfo( $id )
 	{
 		//Call the data for the product from the API

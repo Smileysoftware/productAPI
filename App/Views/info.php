@@ -19,23 +19,37 @@ $product = $params[ 'info' ];
 	<div class="card">
 		<header class="card-header">
 			<p class="card-header-title">
-				<?php echo $product->name; ?>
+				<?php 
+					if( isset( $product->name ) ) {
+						echo $product->name; 
+					}
+				?>
 			</p>
 		</header>
 		<div class="card-content">
 			<div class="content">
-				<p><?php echo $product->description; ?></p>
-				<p class="subtitle">Type: <?php echo ucwords($product->type); ?></p>
-				<p class="subtitle">Suppliers: </p>
-				<ul>
-				<?php
+				
+				<?php 
 
-					foreach ( $product->suppliers as $supplier ) {
-						echo '<li>' . $supplier . '</li>';
-					}
-
+				if ( isset( $product->description )){
+					echo '<p>' . $product->description . '</p>';		
+				}
+				
+				if ( isset( $product->type )){
+					echo '<p class="subtitle">Type: '. ucwords($product->type) .'</p>';
+				}
+				
+				if ( isset( $product->suppliers )){
+					echo '<p class="subtitle">Suppliers: </p>';
+					echo '<ul>';
+						foreach ( $product->suppliers as $supplier ) {
+							echo '<li>' . $supplier . '</li>';
+						}
+					echo '</ul>';
+				}
+				
 				?>
-				</ul>
+
 			</div>
 		</div>
 		<footer class="card-footer">

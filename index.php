@@ -10,9 +10,5 @@ $model = new dataClass();
 
 $data = $model->getList();
 
-//$t = new testClass();
-//
-//$status = $t->test();
-//$status1 = $t->test();
 
 view( 'home' ,  compact ('data') );
